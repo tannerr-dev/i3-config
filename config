@@ -1,12 +1,14 @@
 
 ## Todo
 
+# - [ ] 
+# - [ ] swap to alt ; for move window to workspace
+# - [ ] dark theme ?? gtk inis dont work
 # - [ ] mouse click on trackpad tap
 # - [ ] funtion buttons
 # - [ ] headphone button
 # - [ ] invert trackpad scroll direction
 # - [ ] stop focus direction actions from wrapping, if i want to go left i want to go left
-# - [ ] 
 # - [ ] 
 # - [ ] 
 #
@@ -173,11 +175,11 @@ bindsym Mod1+Control+g workspace number $ws5
 # bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+a move container to workspace number $ws1
-bindsym $mod+Shift+s move container to workspace number $ws2
-bindsym $mod+Shift+d move container to workspace number $ws3
-bindsym $mod+Shift+f move container to workspace number $ws4
-bindsym $mod+Shift+g move container to workspace number $ws5
+bindsym Mod1+Shift+a move container to workspace number $ws1
+bindsym Mod1+Shift+s move container to workspace number $ws2
+bindsym Mod1+Shift+d move container to workspace number $ws3
+bindsym Mod1+Shift+f move container to workspace number $ws4
+bindsym Mod1+Shift+g move container to workspace number $ws5
 # bindsym $mod+Mod1+h move container to workspace number $ws1
 # bindsym $mod+Mod1+j move container to workspace number $ws2
 # bindsym $mod+Mod1+k move container to workspace number $ws3
