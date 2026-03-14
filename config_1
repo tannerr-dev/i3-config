@@ -58,12 +58,11 @@ bindsym $mod+b exec brave-browser
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run
+
 # A more modern dmenu replacement is rofi:
-#this is the one that works but may cause an error
-bindsym $mod+d exec "rofi -modi drun,run -show drun" 
-# example
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun" 
+# bindsym $mod+d exec "rofi -modi drun,run -show drun" #this is the one that works but may cause an error
+# bindcode $mod+40 exec "rofi -modi drun,run -show drun" # example
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
@@ -115,9 +114,8 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# idk what this is useful for , idk how to escape back down
 # focus the parent container
-# bindsym $mod+a focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -136,16 +134,11 @@ set $ws9 "9"
 set $ws10 "10"
 
 # switch to workspace
-bindsym Mod1+Control+a workspace number $ws1
-bindsym Mod1+Control+s workspace number $ws2
-bindsym Mod1+Control+d workspace number $ws3
-bindsym Mod1+Control+f workspace number $ws4
-bindsym Mod1+Control+g workspace number $ws5
-# bindsym $mod+Control+a workspace number $ws1
-# bindsym $mod+Control+s workspace number $ws2
-# bindsym $mod+Control+d workspace number $ws3
-# bindsym $mod+Control+f workspace number $ws4
-# bindsym $mod+Control+g workspace number $ws5
+bindsym $mod+Control+a workspace number $ws1
+bindsym $mod+Control+s workspace number $ws2
+bindsym $mod+Control+d workspace number $ws3
+bindsym $mod+Control+f workspace number $ws4
+bindsym $mod+Control+g workspace number $ws5
 # bindsym $mod+Control+semicolon workspace number $ws5
 # bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
