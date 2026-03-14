@@ -1,19 +1,20 @@
 
 ## Todo
-
-# - [ ] 
-# - [ ] swap to alt ; for move window to workspace
-# - [ ] dark theme ?? gtk inis dont work
-# - [ ] mouse click on trackpad tap
-# - [ ] funtion buttons
-# - [ ] headphone button
-# - [ ] invert trackpad scroll direction
-# - [ ] stop focus direction actions from wrapping, if i want to go left i want to go left
-# - [ ] 
-# - [ ] 
-#
-# - [x] terminal border
-# - [x] border colors
+# - 
+# - 
+# - dark theme ?? gtk inis dont work
+# - mouse click on trackpad tap
+# - funtion buttons
+# - headphone button
+# - invert trackpad scroll direction
+# - stop focus direction actions from wrapping, if i want to go left i want to go left
+# - 
+# - 
+# - 
+# Done
+# - swap to alt ; for move window to workspace
+# - terminal border
+# - border colors
 
 
 
@@ -87,9 +88,6 @@ bindsym $mod+d exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-
-# exec --no-startup-id feh --bg-scale /path/to/picture
-# exec --no-startup-id feh --bg-scale $HOME/stuff/pics/nagquChina.jpeg
 
 # change focus
 bindsym $mod+h focus left
@@ -272,3 +270,8 @@ bar {
         #     binding_mode       #2f343a #900000 #ffffff
         # }
 }
+
+
+# exec --no-startup-id feh --bg-scale /path/to/picture
+exec --no-startup-id feh --bg-scale $HOME/stuff/pics/nagquChina.jpeg
+
