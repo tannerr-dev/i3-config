@@ -2,6 +2,10 @@
 ## Todo
 
 # - 
+# - notification window in top right is blue, can i change it to orange?
+# - how to make notif dissapear after a while
+
+# - 
 # - funtion buttons
 # - volume ui or function buttons
 # - 
@@ -53,13 +57,15 @@ exec --no-startup-id dex --autostart --environment i3
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=5c2e24
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=2f120b
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i $HOME/stuff/pics/nagquChina.png
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 # exec --no-startup-id nm-applet
 
+
+## not sure if this is working or what its targeting , not sure if I put this here
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -74,15 +80,15 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# start a terminal
+# custom key bindings
 bindsym $mod+t exec ghostty
-
-# start brave browser
 bindsym $mod+b exec brave-browser 
-
+bindsym $mod+w exec $HOME/.local/opt/waterfox/waterfox
 # bindsym $mod+e exec GTK_THEME=Adwaita-dark nemo
 bindsym $mod+f exec GTK_THEME=Adwaita-dark nemo
 
+bindsym $mod+s exec import $HOME/screenshot.jpeg
+bindsym $mod+Escape exec systemctl suspend
 
 
 # start dmenu (a program launcher)
@@ -136,7 +142,7 @@ bindsym $mod+m fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+g layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -259,12 +265,16 @@ for_window [class="Brave-browser"] border pixel 2
 
 # set $c1 "#a03b24"
 # set $c1 "#E9B44C"
-set $c1 "#AA663B"
-
+# set $c1 "#AA663B"
 
 # class                 border  backgr. text    indicator child_border
-client.focused          $c1 $c1 #ffffff $c1 $c1 
+# client.focused          $c1 $c1 #ffffff $c1 $c1 
 # client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+
+                                    # grey
+client.focused          #333333 #333333 #999999 #292d2e   #222222
+                                    # red tint
+# client.focused          #333333 #3f3131 #999999 #292d2e   #222222
 client.focused_inactive #333333 #2A2928 #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -306,15 +316,15 @@ bar {
 # exec --no-startup-id feh --bg-scale /path/to/picture
 # exec --no-startup-id feh --bg-scale $HOME/stuff/pics/nagquChina.jpeg
 exec --no-startup-id feh --bg-scale $HOME/stuff/pics/tamanrassetAlgeria.jpeg
-# trackpoint speed
-exec_always xinput set-prop 10 190 1, 0, 0, 0, 1, 0, 0, 0, 2
 
-
+# we are not in gnome so this wont work
 # exec always gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
 
 # tap to click
 exec xinput set-prop 9 317 1
 # scroll direction
 exec_always xinput set-prop 9 317 1
+# trackpoint speed
+exec_always xinput set-prop 10 190 1, 0, 0, 0, 1, 0, 0, 0, 2
 
 
