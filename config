@@ -1,330 +1,133 @@
-
-## Todo
-
-# - 
-# - notification window in top right is blue, can i change it to orange?
-# - how to make notif dissapear after a while
-
-# - 
-# - funtion buttons
-# - volume ui or function buttons
-# - 
-# - 
-# - dark theme ?? gtk inis dont work
-# - headphone button
-# - stop focus direction actions from wrapping, if i want to go left i want to go left
-# - new lock screen entirely?
-# - 
-# Done
-# - lock screen is ugly
-# - swap to alt ; for move window to workspace
-# - terminal border
-# - border colors
-# - mouse click on trackpad tap
-# - invert trackpad scroll direction
-
-
-
-
-
-# It will not be overwritten, so edit it as you like.
-#
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
-
 # i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
+## complete starter file and more commented out below
 set $mod Mod4
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
 font pango:Ubuntu Mono 9
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=2f120b
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i $HOME/stuff/pics/nagquChina.png
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
-
-
-## not sure if this is working or what its targeting , not sure if I put this here
-# Use pactl to adjust volume in PulseAudio.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=3f3131
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
+exec --no-startup-id feh --bg-scale $HOME/tamanrassetAlgeria.jpeg
 
-# custom key bindings
+#custom mouse / trackpad settings
+exec xinput set-prop 9 317 1
+exec_always xinput set-prop 9 317 1
+exec_always xinput set-prop 10 190 1, 0, 0, 0, 1, 0, 0, 0, 2
+
+default_border pixel 2
+default_floating_border pixel 2
+for_window [class="ghostty"] border pixel 2
+for_window [class="Brave-browser"] border pixel 2
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
 bindsym $mod+t exec ghostty
 bindsym $mod+b exec brave-browser 
 bindsym $mod+w exec $HOME/.local/opt/waterfox/waterfox
-# bindsym $mod+e exec GTK_THEME=Adwaita-dark nemo
 bindsym $mod+f exec GTK_THEME=Adwaita-dark nemo
-
-bindsym $mod+s exec import $HOME/screenshot.jpeg
+bindsym $mod+s exec import $HOME/stuff/screenshot.jpeg
 bindsym $mod+Escape exec systemctl suspend
-
-
-# start dmenu (a program launcher)
-# bindsym $mod+d exec --no-startup-id dmenu_run
-# A more modern dmenu replacement is rofi:
-#this is the one that works but may cause an error
 bindsym $mod+d exec "rofi -modi drun,run -show drun" 
-# example
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun" 
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-
-
-
-# kill focused window
 bindsym $mod+Shift+q kill
 
-# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-# bindsym $mod+c split h 
-
-# split in vertical orientation
-# bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
 bindsym $mod+m fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
 bindsym $mod+g layout stacking
-# bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# idk what this is useful for , idk how to escape back down
-# focus the parent container
-# bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 
-# switch to workspace
 bindsym Mod1+Control+a workspace number $ws1
 bindsym Mod1+Control+s workspace number $ws2
 bindsym Mod1+Control+d workspace number $ws3
 bindsym Mod1+Control+f workspace number $ws4
 bindsym Mod1+Control+g workspace number $ws5
 
-# bindsym Mod1+Control+j workspace number $ws1
-# bindsym Mod1+Control+k workspace number $ws2
-# bindsym Mod1+Control+k workspace number $ws3
-# bindsym Mod1+Control+l workspace number $ws4
-# bindsym Mod1+Control+; workspace number $ws5
-
-# bindsym $mod+Control+a workspace number $ws1
-# bindsym $mod+Control+s workspace number $ws2
-# bindsym $mod+Control+d workspace number $ws3
-# bindsym $mod+Control+f workspace number $ws4
-# bindsym $mod+Control+g workspace number $ws5
-# bindsym $mod+Control+semicolon workspace number $ws5
-# bindsym $mod+5 workspace number $ws5
-# bindsym $mod+6 workspace number $ws6
-# bindsym $mod+7 workspace number $ws7
-# bindsym $mod+8 workspace number $ws8
-# bindsym $mod+9 workspace number $ws9
-# bindsym $mod+0 workspace number $ws10
-
-# move focused container to workspace
 bindsym Mod1+Shift+a move container to workspace number $ws1
 bindsym Mod1+Shift+s move container to workspace number $ws2
 bindsym Mod1+Shift+d move container to workspace number $ws3
 bindsym Mod1+Shift+f move container to workspace number $ws4
 bindsym Mod1+Shift+g move container to workspace number $ws5
-# bindsym $mod+Mod1+h move container to workspace number $ws1
-# bindsym $mod+Mod1+j move container to workspace number $ws2
-# bindsym $mod+Mod1+k move container to workspace number $ws3
-# bindsym $mod+Mod1+l move container to workspace number $ws4
-# bindsym $mod+Shift+1 move container to workspace number $ws1
-# bindsym $mod+Shift+2 move container to workspace number $ws2
-# bindsym $mod+Shift+3 move container to workspace number $ws3
-# bindsym $mod+Shift+4 move container to workspace number $ws4
-# bindsym $mod+Shift+5 move container to workspace number $ws5
-# bindsym $mod+Shift+6 move container to workspace number $ws6
-# bindsym $mod+Shift+7 move container to workspace number $ws7
-# bindsym $mod+Shift+8 move container to workspace number $ws8
-# bindsym $mod+Shift+9 move container to workspace number $ws9
-# bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
-
-# colors {
-#     active_workspace #915626
-# }
-
-# default_border none
-default_border pixel 2
-default_floating_border pixel 2
-for_window [class="ghostty"] border pixel 2
-for_window [class="Brave-browser"] border pixel 2
-
-
-# set $c1 "#a03b24"
-# set $c1 "#E9B44C"
-# set $c1 "#AA663B"
-
-# class                 border  backgr. text    indicator child_border
-# client.focused          $c1 $c1 #ffffff $c1 $c1 
-# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-
-                                    # grey
-client.focused          #333333 #333333 #999999 #292d2e   #222222
-                                    # red tint
-# client.focused          #333333 #3f3131 #999999 #292d2e   #222222
-client.focused_inactive #333333 #2A2928 #ffffff #484e50   #5f676a
+# class                   border    backgr.    text     indicator   child_border
+client.focused          #333333 #3f3131 #999999 #292d2e   #222222
+# client.focused          #333333 #333333 #999999 #292d2e   #222222
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.focused_inactive #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
 client.background       #ffffff
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
         status_command i3status --config ~/.config/i3/i3status.conf
-        # position top
-        # position bottom
-        # mode dock
-        # mode hide
         mode invisible
-
-        # hidden_state hide
-        # hidden_state show
-
         colors{
             background #000000
-            # background #000000
-            # statusline #ffffff
-            # statusline #dbccc0
             statusline #ffe19b
             separator #666666
 
             focused_workspace  #ffe19b #FFD46F #48402C
-            # focused_workspace   #44444 #5f676a #ffffff
             active_workspace   #333333 #5f676a #ffffff
             inactive_workspace #333333 #222222 #888888
             urgent_workspace   #2f343a #900000 #ffffff
             binding_mode       #2f343a #900000 #ffffff
         }
 }
-
-# wallpaper background
-# exec --no-startup-id feh --bg-scale /path/to/picture
-# exec --no-startup-id feh --bg-scale $HOME/stuff/pics/nagquChina.jpeg
-exec --no-startup-id feh --bg-scale $HOME/stuff/pics/tamanrassetAlgeria.jpeg
-
-# we are not in gnome so this wont work
-# exec always gsettings set org.gnome.desktop.peripherals.touchpad tap-and-drag false
-
-# tap to click
-exec xinput set-prop 9 317 1
-# scroll direction
-exec_always xinput set-prop 9 317 1
-# trackpoint speed
-exec_always xinput set-prop 10 190 1, 0, 0, 0, 1, 0, 0, 0, 2
-
-
+## END OF FILE
+## END OF FILE
+## END OF FILE
+## END OF FILE
+## END OF FILE
+## END OF FILE
+## END OF FILE
+## END OF FILE
+## END OF FILE
+## END OF FILE
