@@ -14,14 +14,38 @@ tiling_drag modifier titlebar
 exec --no-startup-id feh --bg-scale $HOME/tamanrassetAlgeria.jpeg
 
 #custom mouse / trackpad settings
-exec xinput set-prop 9 317 1
-exec_always xinput set-prop 9 317 1
-exec_always xinput set-prop 10 190 1, 0, 0, 0, 1, 0, 0, 0, 2
+exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
+# do these work?
+# exec xinput set-prop "Elan Trackpoint" "libinput Tapping Enabled" 1
+# exec xinput set-prop 9 317 1
+# exec xinput set-prop 10 190 1, 0, 0, 0, 1, 0, 0, 0, 2
 
-default_border pixel 2
-default_floating_border pixel 2
-for_window [class="ghostty"] border pixel 2
-for_window [class="Brave-browser"] border pixel 2
+# set $c1 "#a03b24"
+# set $c1 "#E9B44C"
+# set $c1 "#AA663Bl"
+# set $c1 "#352020"
+set $c1 "#986F4B"
+
+# class                   border    backgr.    text     indicator   child_border
+client.focused            $c1       $c1     #ffffff   $c1         $c1 
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+# client.focused          #333333 #333333 #999999 #292d2e   #222222
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.focused_inactive #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
+
+set $b 4
+default_border pixel $b
+default_floating_border pixel $b
+for_window [class="ghostty"] border pixel $b
+for_window [class="Brave-browser"] border pixel $b
+for_window [class="Brave-browser"] border pixel $b
+for_window [class="Waterfox"] border pixel $b
+for_window [class="Firefox"] border pixel $b
+for_window [class="nemo"] border pixel $b
+for_window [class="Files"] border pixel $b
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -97,14 +121,6 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-# class                   border    backgr.    text     indicator   child_border
-client.focused          #333333 #3f3131 #999999 #292d2e   #222222
-# client.focused          #333333 #333333 #999999 #292d2e   #222222
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.focused_inactive #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ffffff
 
 bar {
         status_command i3status --config ~/.config/i3/i3status.conf
