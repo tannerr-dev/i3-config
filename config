@@ -3,12 +3,14 @@
 set $mod Mod4
 font pango:Ubuntu Mono 9
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=3f3131
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=3f3131
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=3B3038
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
 floating_modifier $mod
 tiling_drag modifier titlebar
 exec --no-startup-id feh --bg-scale $HOME/tamanrassetAlgeria.jpeg
@@ -22,9 +24,10 @@ exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
 
 # set $c1 "#a03b24"
 # set $c1 "#E9B44C"
-# set $c1 "#AA663Bl"
+# set $c1 "#AA663B"
 # set $c1 "#352020"
-set $c1 "#986F4B"
+# set $c1 "#986F4B"
+set $c1 "#444444"
 
 # class                   border    backgr.    text     indicator   child_border
 client.focused            $c1       $c1     #ffffff   $c1         $c1 
@@ -42,6 +45,7 @@ default_floating_border pixel $b
 for_window [class="ghostty"] border pixel $b
 for_window [class="Brave-browser"] border pixel $b
 for_window [class="Brave-browser"] border pixel $b
+
 for_window [class="Waterfox"] border pixel $b
 for_window [class="Firefox"] border pixel $b
 for_window [class="nemo"] border pixel $b
@@ -55,10 +59,18 @@ bindsym $mod+t exec ghostty
 bindsym $mod+b exec brave-browser 
 bindsym $mod+w exec $HOME/.local/opt/waterfox/waterfox
 bindsym $mod+f exec GTK_THEME=Adwaita-dark nemo
-bindsym $mod+s exec import $HOME/stuff/screenshot.jpeg
+bindsym $mod+s exec import $HOME/stuff/pics/screenshots/1_tmp_screenshot.jpeg
 bindsym $mod+Escape exec systemctl suspend
 bindsym $mod+d exec "rofi -modi drun,run -show drun" 
 bindsym $mod+Shift+q kill
+
+bindsym $mod+m fullscreen toggle
+bindsym $mod+u layout tabbed
+bindsym $mod+i layout stacking
+bindsym $mod+o layout toggle split
+bindsym $mod+Shift+space floating toggle
+# switch between flotaing and tiled windows
+bindsym $mod+space focus mode_toggle
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -80,29 +92,17 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+m fullscreen toggle
-bindsym $mod+g layout stacking
-bindsym $mod+e layout toggle split
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym Mod1+Control+a workspace number 1
+bindsym Mod1+Control+s workspace number 2
+bindsym Mod1+Control+d workspace number 3
+bindsym Mod1+Control+f workspace number 4
+bindsym Mod1+Control+g workspace number 5
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-
-bindsym Mod1+Control+a workspace number $ws1
-bindsym Mod1+Control+s workspace number $ws2
-bindsym Mod1+Control+d workspace number $ws3
-bindsym Mod1+Control+f workspace number $ws4
-bindsym Mod1+Control+g workspace number $ws5
-
-bindsym Mod1+Shift+a move container to workspace number $ws1
-bindsym Mod1+Shift+s move container to workspace number $ws2
-bindsym Mod1+Shift+d move container to workspace number $ws3
-bindsym Mod1+Shift+f move container to workspace number $ws4
-bindsym Mod1+Shift+g move container to workspace number $ws5
+bindsym Mod1+Shift+a move container to workspace number 1
+bindsym Mod1+Shift+s move container to workspace number 2
+bindsym Mod1+Shift+d move container to workspace number 3
+bindsym Mod1+Shift+f move container to workspace number 4
+bindsym Mod1+Shift+g move container to workspace number 5
 
 bindsym $mod+r mode "resize"
 mode "resize" {
