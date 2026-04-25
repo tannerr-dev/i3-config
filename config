@@ -1,55 +1,13 @@
 # i3 config file (v4)
-## complete starter file and more commented out below
 set $mod Mod4
-font pango:Ubuntu Mono 9
-exec --no-startup-id dex --autostart --environment i3
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=3f3131
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=3B3038
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-floating_modifier $mod
-tiling_drag modifier titlebar
-exec --no-startup-id feh --bg-scale $HOME/tamanrassetAlgeria.jpeg
+bindsym $mod+u layout stacking
+bindsym $mod+i layout tabbed
+bindsym $mod+o layout toggle split
 
-#custom mouse / trackpad settings
-exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
-# do these work?
-# exec xinput set-prop "Elan Trackpoint" "libinput Tapping Enabled" 1
-# exec xinput set-prop 9 317 1
-# exec xinput set-prop 10 190 1, 0, 0, 0, 1, 0, 0, 0, 2
-
-# set $c1 "#a03b24"
-# set $c1 "#E9B44C"
-# set $c1 "#AA663B"
-# set $c1 "#352020"
-# set $c1 "#986F4B"
-set $c1 "#444444"
-
-# class                   border    backgr.    text     indicator   child_border
-client.focused            $c1       $c1     #ffffff   $c1         $c1 
-# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-# client.focused          #333333 #333333 #999999 #292d2e   #222222
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.focused_inactive #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ffffff
-
-set $b 4
-default_border pixel $b
-default_floating_border pixel $b
-for_window [class="ghostty"] border pixel $b
-for_window [class="Brave-browser"] border pixel $b
-for_window [class="Brave-browser"] border pixel $b
-
-for_window [class="Waterfox"] border pixel $b
-for_window [class="Firefox"] border pixel $b
-for_window [class="nemo"] border pixel $b
-for_window [class="Files"] border pixel $b
+bindsym $mod+m fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -63,14 +21,6 @@ bindsym $mod+s exec import $HOME/stuff/pics/screenshots/1_tmp_screenshot.jpeg
 bindsym $mod+Escape exec systemctl suspend
 bindsym $mod+d exec "rofi -modi drun,run -show drun" 
 bindsym $mod+Shift+q kill
-
-bindsym $mod+m fullscreen toggle
-bindsym $mod+u layout tabbed
-bindsym $mod+i layout stacking
-bindsym $mod+o layout toggle split
-bindsym $mod+Shift+space floating toggle
-# switch between flotaing and tiled windows
-bindsym $mod+space focus mode_toggle
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -137,6 +87,55 @@ bar {
             binding_mode       #2f343a #900000 #ffffff
         }
 }
+font pango:Ubuntu Mono 9
+exec --no-startup-id dex --autostart --environment i3
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=3f3131
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --color=3B3038
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+floating_modifier $mod
+tiling_drag modifier titlebar
+exec --no-startup-id feh --bg-scale $HOME/tamanrassetAlgeria.jpeg
+
+#custom mouse / trackpad settings
+exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
+# do these work?
+# exec xinput set-prop "Elan Trackpoint" "libinput Tapping Enabled" 1
+# exec xinput set-prop 9 317 1
+# exec xinput set-prop 10 190 1, 0, 0, 0, 1, 0, 0, 0, 2
+
+# set $c1 "#a03b24"
+# set $c1 "#E9B44C"
+# set $c1 "#AA663B"
+# set $c1 "#352020"
+# set $c1 "#986F4B"
+set $c1 "#444444"
+
+# class                   border    backgr.    text     indicator   child_border
+client.focused            $c1       $c1     #ffffff   $c1         $c1 
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+# client.focused          #333333 #333333 #999999 #292d2e   #222222
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.focused_inactive #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
+
+set $b 4
+default_border pixel $b
+default_floating_border pixel $b
+for_window [class="ghostty"] border pixel $b
+for_window [class="Brave-browser"] border pixel $b
+for_window [class="Brave-browser"] border pixel $b
+
+for_window [class="Waterfox"] border pixel $b
+for_window [class="Firefox"] border pixel $b
+for_window [class="nemo"] border pixel $b
+for_window [class="Files"] border pixel $b
 ## END OF FILE
 ## END OF FILE
 ## END OF FILE
