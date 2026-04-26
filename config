@@ -1,9 +1,17 @@
 # i3 config file (v4)
 set $mod Mod4
+#wallpaper
+# exec --no-startup-id feh --bg-scale $HOME/tamanrassetAlgeria.jpeg
+exec --no-startup-id feh --bg-scale $HOME/nagquChina.jpeg
 
+bindsym $mod+y layout toggle split
 bindsym $mod+u layout stacking
 bindsym $mod+i layout tabbed
-bindsym $mod+o layout toggle split
+# idk what this is useful for , idk how to escape back down
+# focus the parent container
+bindsym $mod+p focus parent
+# focus the child container
+bindsym $mod+o focus child
 
 bindsym $mod+m fullscreen toggle
 bindsym $mod+Shift+space floating toggle
@@ -13,13 +21,14 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+d exec "rofi -modi drun,run -show drun" 
+bindsym $mod+Escape exec systemctl suspend
+
 bindsym $mod+t exec ghostty
 bindsym $mod+b exec brave-browser 
 bindsym $mod+w exec $HOME/.local/opt/waterfox/waterfox
 bindsym $mod+f exec GTK_THEME=Adwaita-dark nemo
 bindsym $mod+s exec import $HOME/stuff/pics/screenshots/1_tmp_screenshot.jpeg
-bindsym $mod+Escape exec systemctl suspend
-bindsym $mod+d exec "rofi -modi drun,run -show drun" 
 bindsym $mod+Shift+q kill
 
 bindsym $mod+h focus left
@@ -99,7 +108,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 floating_modifier $mod
 tiling_drag modifier titlebar
-exec --no-startup-id feh --bg-scale $HOME/tamanrassetAlgeria.jpeg
 
 #custom mouse / trackpad settings
 exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
