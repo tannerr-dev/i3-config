@@ -26,6 +26,7 @@ bindsym $mod+Escape exec systemctl suspend
 
 bindsym $mod+t exec ghostty
 bindsym $mod+b exec brave-browser 
+bindsym $mod+c exec chromium
 bindsym $mod+w exec $HOME/.local/opt/waterfox/waterfox
 bindsym $mod+f exec GTK_THEME=Adwaita-dark nemo
 bindsym $mod+s exec import $HOME/stuff/pics/screenshots/1_tmp_screenshot.jpeg
@@ -57,11 +58,11 @@ bindsym Mod1+Control+d workspace number 3
 bindsym Mod1+Control+f workspace number 4
 bindsym Mod1+Control+g workspace number 5
 
-workspace 1 output eDP-1
-workspace 2 output eDP-1
-workspace 3 output eDP-1
-workspace 4 output eDP-1
-workspace 5 output HDMI-2
+workspace 1 output HDMI-2
+workspace 2 output HDMI-2
+workspace 3 output HDMI-2
+workspace 4 output HDMI-2
+workspace 5 output eDP-1
 
 bindsym Mod1+Shift+a move container to workspace number 1
 bindsym Mod1+Shift+s move container to workspace number 2
