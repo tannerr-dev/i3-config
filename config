@@ -1,8 +1,16 @@
 # i3 config file (v4)
+
+# workspace 1 output HDMI-2
+# workspace 2 output HDMI-2
+# workspace 3 output HDMI-2
+# workspace 4 output HDMI-2
+# workspace 5 output eDP-1
+
 set $mod Mod4
 #wallpaper
 # exec --no-startup-id feh --bg-scale $HOME/tamanrassetAlgeria.jpeg
-exec --no-startup-id feh --bg-scale $HOME/nagquChina.jpeg
+# exec --no-startup-id feh --bg-scale $HOME/nagquChina.jpeg
+exec --no-startup-id feh --bg-scale $HOME/IMG_8828.jpg
 
 bindsym $mod+y layout toggle split
 bindsym $mod+u layout stacking
@@ -58,12 +66,6 @@ bindsym Mod1+Control+d workspace number 3
 bindsym Mod1+Control+f workspace number 4
 bindsym Mod1+Control+g workspace number 5
 
-workspace 1 output HDMI-2
-workspace 2 output HDMI-2
-workspace 3 output HDMI-2
-workspace 4 output HDMI-2
-workspace 5 output eDP-1
-
 bindsym Mod1+Shift+a move container to workspace number 1
 bindsym Mod1+Shift+s move container to workspace number 2
 bindsym Mod1+Shift+d move container to workspace number 3
@@ -112,12 +114,20 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# Bluetooth headphone play/pause button (Beats)
+# Controls whichever MPRIS player is active: Brave, Chromium, Firefox, Spotify, VLC
+# Note: Waterfox does not expose MPRIS and cannot be controlled
+bindcode 209 exec --no-startup-id $HOME/.local/bin/mpris_playpause.sh
 
 floating_modifier $mod
 tiling_drag modifier titlebar
 
 #custom mouse / trackpad settings
 exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
+# Kensington SlimBlade Trackball - left side = left click, right side = right click
+# Top-Left (btn 2) -> left click, Bottom-Left (btn 1) -> left click
+# Top-Right (btn 8) -> right click, Bottom-Right (btn 3) -> right click
+exec xinput set-button-map "Kensington Kensington Slimblade Trackball" 1 1 3 4 5 6 7 3
 # do these work?
 # exec xinput set-prop "Elan Trackpoint" "libinput Tapping Enabled" 1
 # exec xinput set-prop 9 317 1
