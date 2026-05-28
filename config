@@ -13,8 +13,8 @@ set $mod Mod4
 exec --no-startup-id feh --bg-scale $HOME/IMG_8828.jpg
 
 bindsym $mod+y layout toggle split
-bindsym $mod+u layout stacking
-bindsym $mod+i layout tabbed
+bindsym $mod+u layout tabbed
+bindsym $mod+i layout stacking
 # idk what this is useful for , idk how to escape back down
 # focus the parent container
 bindsym $mod+p focus parent
