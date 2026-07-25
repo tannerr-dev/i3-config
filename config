@@ -1,4 +1,8 @@
 # i3 config file (v4)
+## exit
+    # super(aka mod, windows...) + shift + e  
+## restart
+    # super(aka mod, windows...) + shift + r
 
 # workspace 1 output HDMI-2
 # workspace 2 output HDMI-2
@@ -60,17 +64,29 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym Mod1+Control+a workspace number 1
-bindsym Mod1+Control+s workspace number 2
-bindsym Mod1+Control+d workspace number 3
-bindsym Mod1+Control+f workspace number 4
-bindsym Mod1+Control+g workspace number 5
+# bindsym Mod1+Control+a workspace number 1
+# bindsym Mod1+Control+s workspace number 2
+# bindsym Mod1+Control+d workspace number 3
+# bindsym Mod1+Control+f workspace number 4
+# bindsym Mod1+Control+g workspace number 5
+#
+# bindsym Mod1+Shift+a move container to workspace number 1
+# bindsym Mod1+Shift+s move container to workspace number 2
+# bindsym Mod1+Shift+d move container to workspace number 3
+# bindsym Mod1+Shift+f move container to workspace number 4
+# bindsym Mod1+Shift+g move container to workspace number 5
 
-bindsym Mod1+Shift+a move container to workspace number 1
-bindsym Mod1+Shift+s move container to workspace number 2
-bindsym Mod1+Shift+d move container to workspace number 3
-bindsym Mod1+Shift+f move container to workspace number 4
-bindsym Mod1+Shift+g move container to workspace number 5
+bindsym Mod1+Control+g workspace number 1
+bindsym Mod1+Control+h workspace number 2
+bindsym Mod1+Control+j workspace number 3
+bindsym Mod1+Control+k workspace number 4
+bindsym Mod1+Control+l workspace number 5
+
+bindsym Mod1+Shift+g move container to workspace number 1
+bindsym Mod1+Shift+h move container to workspace number 2
+bindsym Mod1+Shift+j move container to workspace number 3
+bindsym Mod1+Shift+k move container to workspace number 4
+bindsym Mod1+Shift+l move container to workspace number 5
 
 bindsym $mod+r mode "resize"
 mode "resize" {
